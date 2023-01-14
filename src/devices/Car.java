@@ -1,6 +1,6 @@
 package devices;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     public Double millage;
     public Double engineVolume;
     public String fuelType;
@@ -9,4 +9,15 @@ public class Car extends Device {
         super(id, producer, model);
         this.fuelType = fuelType;
     }
+
+    void turnOn() {
+        System.out.println("przekręcam kluczyk");
+        System.out.println("mieli");
+        System.out.println("mieli");
+        System.out.println("mieli");
+        System.out.println("mieli");
+        System.out.println("odpalił");
+    }
+
+    public abstract void refuel();
 }

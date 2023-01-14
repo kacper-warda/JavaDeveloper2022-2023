@@ -1,6 +1,6 @@
 package creatures;
 
-public class Animal {
+public abstract class Animal implements Feedable, Saleable {
     public static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     public static final Double DEFAULT_DOG_WEIGHT = 6.0;
     public static final Double DEFAULT_CAT_WEIGHT = 2.0;
@@ -8,8 +8,8 @@ public class Animal {
 
     public final String species;
     public String name;
-    private Double weight;
-    private Boolean isAlive;
+    protected Double weight;
+    protected Boolean isAlive;
 
 
     public Animal(String species) {
@@ -55,6 +55,15 @@ public class Animal {
         }
     }
 
+    public void feed() {
+        if (isAlive) {
+            weight += 1;
+            System.out.println("dzięki za żarcie :) ");
+        } else {
+            System.out.println("trochę za późno :|");
+        }
+    }
+
     public void takeForAWalk(Double distance) {
         if (!isAlive) {
             System.out.println("HALO POLICJA!");
@@ -67,4 +76,22 @@ public class Animal {
             }
         }
     }
+
+    public void sell(Human seller, Human buyer, Double price) {
+        if (buyer.cash < price) {
+            System.out.println("sorry, nie masz kasy");
+        } else if (seller.pet != this) {
+            System.out.println("sorry, nie masz zwierzaka");
+        } else if (this instanceof Human) {
+            System.out.println("zapraszam na rozmowę w celu ustalnie planu dalszego życia");
+            System.out.println("w pierdlu");
+        } else {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.pet = this;
+            seller.pet = null;
+            System.out.println("transakcja udana, zwierzyna sprzedana");
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package devices;
 
-public class Device {
+public abstract class Device {
     public final Integer id;
     public final String producer;
     public final String model;
@@ -11,12 +11,6 @@ public class Device {
         this.model = model;
     }
 
-    void turnOn() {
-        System.out.println("naciśnij przycisk");
-        System.out.println("czekaj");
-        System.out.println("czekaj");
-        System.out.println("czekaj");
-        System.out.println("o! mój telefon " + producer + " działa!");
-    }
+    abstract void turnOn();
 
 }
