@@ -11,4 +11,9 @@ public class FarmAnimal extends Animal implements Edible {
         this.weight = 0.0;
         System.out.println("żegnajcieee");
     }
+
+    public String toString() {
+        return "Elo to zwierze z farmy, a konkretnie "
+                + this.species;
+    }
 }

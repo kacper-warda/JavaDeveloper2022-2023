@@ -5,6 +5,8 @@ public abstract class Animal implements Feedable, Saleable {
     public static final Double DEFAULT_DOG_WEIGHT = 6.0;
     public static final Double DEFAULT_CAT_WEIGHT = 2.0;
     public static final Double DEFAULT_HORSE_WEIGHT = 800.0;
+    private static final Double DEFAULT_FOOD_WEIGHT = 1.0;
+    private static final Double DEFAULT_WALK_DISTANCE = 2.0;
 
     public final String species;
     public String name;
@@ -56,12 +58,11 @@ public abstract class Animal implements Feedable, Saleable {
     }
 
     public void feed() {
-        if (isAlive) {
-            weight += 1;
-            System.out.println("dzięki za żarcie :) ");
-        } else {
-            System.out.println("trochę za późno :|");
-        }
+        this.feed(DEFAULT_FOOD_WEIGHT);
+    }
+
+    public void takeForAWalk() {
+        this.takeForAWalk(DEFAULT_WALK_DISTANCE);
     }
 
     public void takeForAWalk(Double distance) {
@@ -92,6 +93,11 @@ public abstract class Animal implements Feedable, Saleable {
             seller.pet = null;
             System.out.println("transakcja udana, zwierzyna sprzedana");
         }
+    }
+
+
+    public String toString() {
+        return "To jest klasa Animal, gatunek " + this.species;
     }
 
 }
